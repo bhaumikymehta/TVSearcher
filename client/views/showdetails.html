@@ -1,0 +1,32 @@
+<h2>Show details</h2>
+<h2><i><b>{{shw.name}}</b></i></h2><br/>
+<img src="{{shw.image.medium}}"/><br/>
+<h4>Description:</h4><p ng-bind-html="shw.summary | trustHTML"></p> <br/>
+<h4>Genres:</h4>
+<div ng-repeat="g in shw.genres">
+  {{g}}</div>
+<h4>Cast:</h4>
+
+<div ng-repeat="cast in shw._embedded.cast">
+<b>Real Name:{{cast.person.name}}<br/>
+Character Name:{{cast.character.name}}<br/></b>
+<div ng-if="cast.person.image.medium">
+  <img src="{{cast.person.image.medium}}"/><br/>
+</div>
+
+
+<div ng-if="!cast.person.image.medium">
+  <div ng-if="cast.character.image.medium">
+    <img src="{{cast.character.image.medium}}"/><br/>
+  </div>
+</div>
+
+<div ng-if="!cast.person.image.medium">
+  <div ng-if="!cast.character.image.medium">
+      <img src="../images/default.png" height="20%" width="20%"/><br/>
+  </div>
+</div>
+
+
+
+  </div>
